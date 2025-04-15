@@ -1,0 +1,12 @@
+E:\FF14act\AEAssist 国服 1024\ACR\DDDacr\net8.0\DDDacr.deps.json
+E:\FF14act\AEAssist 国服 1024\ACR\DDDacr\net8.0\DDDacr.dll
+E:\FF14act\AEAssist 国服 1024\ACR\DDDacr\net8.0\DDDacr.pdb
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.csproj.AssemblyReference.cache
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.GeneratedMSBuildEditorConfig.editorconfig
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.AssemblyInfoInputs.cache
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.AssemblyInfo.cs
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.csproj.CoreCompileInputs.cache
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.dll
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\refint\DDDacr.dll
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\DDDacr.pdb
+E:\ACR-DEV\DDDacr\obj\Debug\net8.0\ref\DDDacr.dll
