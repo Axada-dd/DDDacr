@@ -11,18 +11,41 @@ namespace DDDacr.工具
         /// 判断是否是T奶
         /// </summary>
         /// <returns></returns>
-        public static bool IsTankOrHealer(this IBattleChara chara)
+        public static bool IsTankOrHealer(this IGameObject? chara)
         {
-            return chara.IsInParty() && (chara.IsTank()|| chara.IsHealer());
+            if (chara == null) return false;
+            IBattleChara? battleChara = chara as IBattleChara;
+            return battleChara.IsInParty() && (battleChara.IsTank()|| battleChara.IsHealer());
         }
-
+        /// <summary>
+        /// 判断是否是DPS
+        /// </summary> 
+        public static bool IsDpsRe(this IGameObject? chara)
+        {
+           if (chara == null) return false;
+           IBattleChara? battleChara = chara as IBattleChara;
+           return battleChara.IsInParty() && battleChara.IsDps();
+        }
         /// <summary>
         /// 获取职业
         /// </summary>
         /// <returns></returns>
-        public static string GetObjcetJobName(this IBattleChara chara)
+        public static string GetObjcetJobName(this IGameObject? chara)
         {
-            return !chara.IsInParty() ? "" : JobHelper.GetTranslation(chara.CurrentJob());
+            if (chara == null) return "null";
+            IBattleChara? battleChara = chara as IBattleChara;
+            return !battleChara.IsInParty() ? "非玩家" : JobHelper.GetTranslation(battleChara.CurrentJob());
+        }
+        /// <summary>
+        /// 获取玩家职能
+        /// </summary>
+        /// <param name="chara"></param>
+        /// <returns></returns>
+        public static string GetRoleByPlayerObjct(this IGameObject? chara)
+        {
+            if (chara == null) return "null";
+            IBattleChara? battleChara = chara as IBattleChara;
+           return !battleChara.IsInParty() ? "非玩家" : RemoteControlHelper.GetRoleByPlayerName(chara.Name.TextValue); 
         }
     }
 }
