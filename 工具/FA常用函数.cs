@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
 using AEAssist;
+using AEAssist.Avoid;
 using AEAssist.Extension;
 using AEAssist.Helper;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -66,6 +70,25 @@ namespace DDDacr.工具
                 _ => -1
             };
             return playerIndex;
+        }
+        /// <summary>
+        /// 绘制圆形
+        /// </summary> 
+        public static void DrawCircle(this Vector3 pos)
+        {
+            try
+            {
+                if (Share.Shape != null) Share.Shape.Clear();
+                else Share.Shape = new List<Shape>();
+            }
+            catch (Exception e)
+            {
+                LogHelper.Error(e.Message);
+            }
+            CircleShape circleShape = new CircleShape();
+            circleShape.Radius = 0.4f;
+            circleShape.Origin = pos;
+            Share.Shape.Add(circleShape);
         }
     }
 }
