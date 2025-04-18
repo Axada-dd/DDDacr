@@ -47,5 +47,25 @@ namespace DDDacr.工具
             IBattleChara? battleChara = chara as IBattleChara;
            return !battleChara.IsInParty() ? "非玩家" : RemoteControlHelper.GetRoleByPlayerName(chara.Name.TextValue); 
         }
+
+        /// <summary>
+        /// 获取玩家职能序号
+        /// </summary>
+        public static int GetRoleByPlayerObjctIndex(this IGameObject? chara)
+        {
+            int playerIndex = chara.GetRoleByPlayerObjct() switch
+            {
+                "MT" => 0,
+                "ST" => 1,
+                "H1" => 2,
+                "H2" => 3,
+                "D1" => 4,
+                "D2" => 5,
+                "D3" => 6,
+                "D4" => 7,
+                _ => -1
+            };
+            return playerIndex;
+        }
     }
 }
