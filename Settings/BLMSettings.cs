@@ -12,6 +12,7 @@ namespace DDDacr.Settings
         public static BLMSettings Instance;
         #region 标准模板代码 可以直接复制后改掉类名即可
         private static string path;
+        public bool IsOpenPartyRoleSettingWindow = true;
         public static void Build(string settingPath)
         {
             path = Path.Combine(settingPath,nameof(BLMSettings) + ".json");
