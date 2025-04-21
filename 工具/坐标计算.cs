@@ -69,5 +69,39 @@ namespace DDDacr.工具
             var lenth = v2.Length();
             return new Vector3(centre.X + MathF.Sin(rot) * lenth, centre.Y, centre.Z - MathF.Cos(rot) * lenth);
         }
+
+        public static Vector3 坐标远离中心(Vector3 point, Vector3 centre, float distance, float radian)
+        {
+            
+            Vector2 v2 = new Vector2(point.X - centre.X, point.Z - centre.Z);// 计算方向向量
+            var lenth = v2.Length();
+            var pointNew = new Vector3(0,0,100-lenth-distance);
+            
+            return RotatePoint(pointNew,centre,radian); // 计算新的坐标点
+        }
+        /// <summary>
+        /// 在原始点与中心点的连线上，计算距离原始点指定距离的新坐标点
+        /// </summary>
+        /// <param name="originalPoint">原始坐标点</param>
+        /// <param name="center">中心点</param>
+        /// <param name="distance">目标点与原始点的距离（可正可负，符号决定方向）</param>
+        /// <returns>计算得到的新坐标点</returns>
+        /// <exception cref="ArgumentException">当原始点与中心点重合时抛出</exception>
+        public static Vector3 CalculatePointOnLine(Vector3 originalPoint, Vector3 center, float distance)
+        {
+            var originalPoint2D = new Vector2(originalPoint.X, originalPoint.Z);
+            var center2D = new Vector2(center.X, center.Z);
+            // 处理原始点与中心点重合的情况
+            if (originalPoint2D == center2D)
+            {
+                throw new ArgumentException("原始点与中心点不能重合", nameof(originalPoint));
+            }
+        
+            // 计算从中心点到原始点的方向向量并归一化
+            Vector2 direction = Vector2.Normalize(originalPoint2D - center2D);
+            var result = originalPoint2D + direction * distance;
+            // 计算新点：原始点沿着方向向量移动指定距离
+            return new Vector3(result.X, 0, result.Y);
+        }
     }
 }
